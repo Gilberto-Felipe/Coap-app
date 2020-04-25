@@ -40,7 +40,7 @@ server.on('request', (req, res) => {
 
       else if (URL === '/sensores/light') {
         if (light) {
-          res.end(JSON.stringify({ estado: `Light: ${lightState}%` }))
+          res.end(JSON.stringify({ estado: `Light: ${lightState}` }))
         } else {
           res.end(JSON.stringify({ estado: 'Light sensor is OFF.' }))
         }

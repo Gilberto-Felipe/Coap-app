@@ -43,8 +43,3 @@ setInterval(() => {
     req.end(JSON.stringify({ value: `${humidity}` }))
 
 }, 4000);
-
-
-
-
-
