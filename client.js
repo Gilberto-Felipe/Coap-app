@@ -9,11 +9,11 @@ menu = menu.enableDefaultPrompt()
 menu.addDelimiter('-', 40, 'Menu COAP')
 
 menu.addItem(
-  'Obtener datos del sensor de luminosidad',
+  'Getting data from humidity',
   () => {
     let request = coap.request({
       hostname: 'localhost',
-      pathname: '/sensores/luminosidad',
+      pathname: '/sensores/humidity',
       method: 'GET'
     })
     request.on('response', (res) => {
@@ -27,11 +27,11 @@ menu.addItem(
 )
 
 menu.addItem(
-  'Obtener datos del sensor de la computadora',
+  'Getting data from light',
   () => {
     let request = coap.request({
       hostname: 'localhost',
-      pathname: '/sensores/computadora',
+      pathname: '/sensores/light',
       method: 'GET'
     })
     request.on('response', (res) => {
@@ -45,29 +45,11 @@ menu.addItem(
 )
 
 menu.addItem(
-  'Obtener datos del sensor de la puerta',
+  'Getting data from temperature',
   () => {
     let request = coap.request({
       hostname: 'localhost',
-      pathname: '/sensores/puerta',
-      method: 'GET'
-    })
-    request.on('response', (res) => {
-      let respuesta = JSON.parse(res.payload.toString());
-      console.log(respuesta.estado)
-    })
-    request.end("")
-  },
-  null,
-  null
-)
-
-menu.addItem(
-  'Obtener datos del sensor de humo',
-  () => {
-    let request = coap.request({
-      hostname: 'localhost',
-      pathname: '/sensores/humo',
+      pathname: '/sensores/temperature',
       method: 'GET'
     })
     request.on('response', (res) => {
