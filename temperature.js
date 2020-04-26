@@ -8,30 +8,30 @@ const getRandomIntInclusive = (min, max) => {
 // console.log(getRandomIntInclusive(100,1000));
 
 
-// humidity sensor
-let requestHU = coap.request({
+// temperature sensor
+let requestTE = coap.request({
     hostname: 'localhost',
-    pathname: '/sensores/humidity',
+    pathname: '/sensores/temperature',
     method: 'POST'
 })
 
-requestHU.on('response', (res) => {
+requestTE.on('response', (res) => {
     let respuesta = JSON.parse(res.payload.toString());
     console.log(respuesta.estado)
 })
 
-requestHU.write(JSON.stringify({ activar: true }))
+requestTE.write(JSON.stringify({ activar: true }))
 
-requestHU.end()
+requestTE.end()
 
 
 setInterval(() => {
 
-    let humidity = getRandomIntInclusive(100,1000)
+    let temperature = getRandomIntInclusive(1,100)
 
     let req = coap.request({
         hostname: 'localhost',
-        pathname: `/sensores/humidity`,
+        pathname: `/sensores/temperature`,
         method: 'PUT'
     })
 
@@ -40,6 +40,6 @@ setInterval(() => {
         console.log(respuesta.estado)
     })
 
-    req.end(JSON.stringify({ value: `${humidity}` }))
+    req.end(JSON.stringify({ value: `${temperature}` }))
 
 }, 4000);

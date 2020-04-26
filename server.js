@@ -48,7 +48,7 @@ server.on('request', (req, res) => {
 
       else if (URL === '/sensores/temperature') {
         if (temperature) {
-          res.end(JSON.stringify({ estado: `Temperature: ${temperatureState}%` }))
+          res.end(JSON.stringify({ estado: `Temperature: ${temperatureState} °C` }))
         } else {
           res.end(JSON.stringify({ estado: 'Temperature sensor is OFF.' }))
         }
